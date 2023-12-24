@@ -28,17 +28,20 @@
     <!-- carousel -->
 
     <!-- 2D 3D -->
-    <div class="d-flex justify-content-around my-2">
+    <!-- <div class="d-flex justify-content-around my-2">
         <a href="" class="btn btn-purple text-white d-block w-100 m-3 py-3 d-frame-box rounded-5">
             <h5 class="p-0 m-0">2D</h5>
         </a>
         <a href="" class="btn btn-purple text-white d-block w-100 m-3 py-3 d-frame-box rounded-5">
             <h5 class="p-0 m-0">3D</h5>
         </a>
-    </div>
+    </div> -->
 
     <div class="d-flex justify-content-around my-2">
 
+        <a href="{{ url('/football-index') }}" class="btn btn-purple text-white d-block w-100 m-3 py-3 d-frame-box rounded-5">
+            <h5 class="p-0 m-0">Football</h5>
+        </a>
         <a href="" class="btn btn-purple text-white d-block w-100 m-3 py-3 d-frame-box rounded-5">
             <h5 class="p-0 m-0">Slot</h5>
         </a>
