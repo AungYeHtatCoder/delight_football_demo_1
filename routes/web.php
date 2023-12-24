@@ -94,7 +94,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Co
   Route::get('/agent-cash-out/{id}', [App\Http\Controllers\Admin\Master\MasterController::class, 'transferCashOut'])->name('agent-cash-out');
   // store agent cash out route
   Route::put('/agent-cash-out-store/{id}', [App\Http\Controllers\Admin\Master\MasterController::class, 'AgentCashOutStore'])->name('agent-cash-out-store');
-    Route::resource('/promotions', PromotionController::class);
+  Route::resource('/promotions', PromotionController::class);
   // agent user list route
   Route::get('/agent-user-list', [App\Http\Controllers\Admin\Agent\AgentController::class, 'index'])->name('agent-user-list');
   // agent user create route
@@ -135,5 +135,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Co
   Route::get('/get-all-master-to-agent-transfer-log', [App\Http\Controllers\Admin\Transfer\TransferLogController::class, 'MasterToAgentTransferLog'])->name('get-all-master-agent-transfer-log');
   // get all agent to user transfer log route
   Route::get('/get-all-agent-to-user-transfer-log', [App\Http\Controllers\Admin\Transfer\TransferLogController::class, 'AgentToUserTransferLog'])->name('get-all-agent-user-transfer-log');
-
 });
+
+Route::get('football-index', [App\Http\Controllers\Football\FootballController::class, 'index']);
+Route::get('football-maung', [App\Http\Controllers\Football\FootballController::class, 'maung']);
+Route::get('football-bodygoal', [App\Http\Controllers\Football\FootballController::class, 'bodyGoal']);
+Route::get('football-matches', [App\Http\Controllers\Football\FootballController::class, 'match']);
+Route::get('football-moneylist', [App\Http\Controllers\Football\FootballController::class, 'moneyList']);
+Route::get('football-goalresult', [App\Http\Controllers\Football\FootballController::class, 'goalResult']);
+Route::get('football-moneychange', [App\Http\Controllers\Football\FootballController::class, 'moneyChange']);
