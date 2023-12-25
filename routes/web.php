@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PermissionController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+  require __DIR__ . '/amk.php';
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\User\WelcomeController::class, 'index'])->name('welcome');

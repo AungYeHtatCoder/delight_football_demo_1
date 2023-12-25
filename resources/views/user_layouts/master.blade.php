@@ -1,4 +1,5 @@
 @include('user_layouts.head')
+@yield('styles')
 
 <!-- main content -->
 <div class="container-fluid" id="allBgColor">
@@ -11,3 +12,4 @@
 <!-- main content -->
 
 @include('user_layouts.script')
+@yield('scripts')
