@@ -5,16 +5,7 @@
  .fa-star {
   color: gold;
  }
-.bg-home {
-    background-color: #f00; /* Change this to the color you want for the home team */
-}
 
-.bg-away {
-    background-color: #0f0; /* Change this to the color you want for the away team */
-}
-.highlighted {
-    background-color: #f0e68c !important; /* Use important sparingly */
-}
  .box-1 {
   background: linear-gradient(6deg, rgba(102, 0, 149, 1) 0%, rgba(52, 0, 87, 1) 56%);
   border: 1px solid gold;
@@ -255,46 +246,121 @@
         }
             @endphp
 
-          <div class="pt-1 mt-2">
-    <p><i class="fa fa-star pe-2"></i> {{ $odd->league_name }}</p>
-</div>
-<div class="card shadow bg-transparent px-2 pt-2 pb-3">
-    <p class="text-white">ပွဲချိန် : {{ $odd->starts }}</p>
+            <div class="pt-1 mt-2">
+                <p><i class="fa fa-star pe-2"></i> {{ $odd->league_name }}</p>
+            </div>
+            <div class="card shadow bg-transparent px-2 pt-2 pb-3">
+                <p class="text-white">ပွဲချိန် : {{ $odd->starts }}</p>
 
-    <div class="d-flex">
-        {{-- Home Team --}}
-        <div class="box-1 d-flex justify-content-around" onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'h', '{{ $mm_odd }}', 'h_{{ $odd->id }}{{ $count }}', 'h')" id="h_{{ $odd->id }}{{ $count }}">
-            <p class="d-flex align-items-center">{{ $odd->home }}</p>
-            <h5>
-                <span class="badge bg-primary">{{ $mm_odd }}</span>
-            </h5>
-        </div>
-        {{-- Away Team --}}
-        <div class="box-1" onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'a', '{{ $mm_odd }}', 'a_{{ $odd->id }}{{ $count }}', 'a')" id="a_{{ $odd->id }}{{ $count }}">
-            <p>{{ $odd->away }}</p>
-        </div>
-    </div>
+                {{-- Dynamic HTML based on conditions --}}
+                @if ($odd->money_line_h < $odd->money_line_a)
+                <div class="d-flex">
+                    <div class="box-1 d-flex justify-content-around">
+                        <p class="d-flex align-items-center">{{ $odd->home }}</p>
+                        <h5>
+                            <span class="badge bg-primary">{{ $mm_odd }}</span>
+                        </h5>
+                    </div>
+                    <div class="box-1">
+                        <p>{{ $odd->away }}</p>
+                    </div>
+                </div>
 
-    <div class="d-flex mt-1">
-        {{-- Over Button --}}
-        <div class="box-2" id="homeTeam" onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'o', '{{ $mm_Todd }}', 'o_{{ $odd->id }}{{ $count }}', '')" id="o_{{ $odd->id }}{{ $count }}">
-            <p>ဂိုးပေါ်</p>
-        </div>
-        <div class="box-3">
-            <p>{{ $mm_Todd }}</p>
-        </div>
-        {{-- Under Button --}}
-        <div class="box-2" id="awayTeam" onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'u', '{{ $mm_Todd }}', 'u_{{ $odd->id }}{{ $count }}', '')" id="u_{{ $odd->id }}{{ $count }}">
-            <p>ဂိုးအောက်</p>
-        </div>
-    </div>
-</div>
+                <div class="d-flex mt-1">
+                    {{-- <div class="box-2" onclick="betOdd('{{ $odd->id }}','{{ $odd->league_name }}','{{ $odd->home }}','{{ $odd->away }}','o','{{ $mm_Todd }}','o_{{ $odd->id }}{{ $count }}','')">
+                        <p>ဂိုးပေါ်</p>
+                    </div>
+                    <div class="box-3">
+                        <p>{{ $mm_Todd }}</p>
+                    </div>
+                    <div class="box-2" onclick="betOdd('{{ $odd->id }}','{{ $odd->league_name }}','{{ $odd->home }}','{{ $odd->away }}','u','{{ $mm_Todd }}','u_{{ $odd->id }}{{ $count }}','')">
+                        <p>ဂိုးအောက်</p>
+                    </div> --}}
+                     <div class="box-2">
+                         <button onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'o', '{{ $mm_Todd }}', 'match_{{ $odd->id }}_o', '')" class="btn btn-primary">Bet Over</button>
+                    </div>
+                    <div class="box-3">
+                        <p>{{ $mm_Todd }}</p>
+                    </div>
+                    <div class="box-2">
+                         <button onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'u', '{{ $mm_Todd }}', 'match_{{ $odd->id }}_u', '')" class="btn btn-info">Bet Under</button>
+                    </div>
+                </div>
+                @endif
+                @if ($odd->money_line_h > $odd->money_line_a)
+                <div class="d-flex">
+                    <div class="box-1 d-flex justify-content-around">
+                        <p class="d-flex align-items-center">{{ $odd->home }}</p>
+                        <h5>
+                            <span class="badge bg-primary">{{ $mm_odd }}</span>
+                        </h5>
+                    </div>
+                    <div class="box-1">
+                        <p>{{ $odd->away }}</p>
+                    </div>
+                </div>
 
+                <div class="d-flex mt-1">
+                    {{-- <div class="box-2" onclick="betOdd('{{ $odd->id }}','{{ $odd->league_name }}','{{ $odd->home }}','{{ $odd->away }}','o','{{ $mm_Todd }}','o_{{ $odd->id }}{{ $count }}','')">
+                        <p>ဂိုးပေါ်</p>
+                    </div> --}}
+                    <div class="box-2">
+                         <button onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'o', '{{ $mm_Todd }}', 'match_{{ $odd->id }}_o', '')" class="btn btn-primary">Bet Over</button>
+                    </div>
+                    <div class="box-3">
+                        <p>{{ $mm_Todd }}</p>
+                    </div>
+                    {{-- <div class="box-2" onclick="betOdd('{{ $odd->id }}','{{ $odd->league_name }}','{{ $odd->home }}','{{ $odd->away }}','u','{{ $mm_Todd }}','u_{{ $odd->id }}{{ $count }}','')">
+                        <p>ဂိုးအောက်</p>
+                    </div> --}}
+                    <div class="box-2">
+                         <button onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'u', '{{ $mm_Todd }}', 'match_{{ $odd->id }}_u', '')" class="btn btn-info">Bet Under</button>
+                    </div>
+                </div>
+                @endif
+            </div>
         @endforeach
     @else
         <p>No odds data available at the moment.</p>
     @endif
+
+     {{-- <div class="d-flex justify-content-around mt-2">
+        <button onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'o', '{{ $mm_Todd }}', 'match_{{ $odd->id }}_o', '')">Bet Over</button>
+        <button onclick="betOdd('{{ $odd->id }}', '{{ $odd->league_name }}', '{{ $odd->home }}', '{{ $odd->away }}', 'u', '{{ $mm_Todd }}', 'match_{{ $odd->id }}_u', '')">Bet Under</button>
+    </div> --}}
+{{-- first list --}}
+ {{-- <div class="pt-1 mt-2">
+  <p><i class="fa fa-star pe-2"></i> AFC Cup</p>
+ </div>
+ <div class="card shadow bg-transparent px-2 pt-2 pb-3">
+  <p class="text-white">ပွဲချိန် : 11-12-2023 4:30 PM</p>
+  <div class="d-flex">
+   <div class="box-1 d-flex justify-content-around">
+    <p class="d-flex align-items-center">မာဇီယာ SRC</p>
+    <h5>
+     <span class="badge" style="background-color: #8b00dc;">1-10</span>
+    </h5>
+   </div>
+   <div class="box-1">
+    <p>ATK မိုဟန် B</p>
+   </div>
+  </div>
+  <div class="d-flex mt-1">
+   <div class="box-2">
+    <p>ဂိုးပေါ်</p>
+   </div>
+   <div class="box-3">
+    <p>4 + 60</p>
+   </div>
+   <div class="box-2">
+    <p>ဂိုးအောက်</p>
+   </div>
+  </div>
+ </div> --}}
+ {{-- first list --}}
 </div>
+
+
    <footer id="footer" class="fixed-bottom">
     <div class="row">
      <div class="col-lg-6 col-md-6 offset-lg-3 offset-md-3 col-12 footer-border-purple pt-3 pb-1 footer-border">
@@ -330,6 +396,9 @@
     </div>
   </div>
 </div>
+
+
+{{-- @include('user_layouts.sub-footer') --}}
 @endsection
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -343,9 +412,8 @@
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-  function betOdd(id, l_name, home, away, bet, rate, d_id, bd) {
-     // Prevent event bubbling if nested
-    event.stopPropagation();
+
+    function betOdd(id, l_name, home, away, bet, rate, d_id, bd) {
     var htmlExpand = '';
     mmOddBet = {};
     mmOddBet.odd_id = id;
@@ -357,34 +425,23 @@
     mmOddBet.amount = 0.00;
     mmOddBet.d_id = d_id;
     mmOddBet.bd = bd;
-
-    // Remove highlight from all elements
-    $('.box-1').removeClass('highlighted');
-    $('.box-2').removeClass('highlighted');
-
-    // Add highlight to the selected element
-    $('#' + d_id).addClass('highlighted');
-
-    // Filter out the current match from the bet list
     let tmp = betObjLst.filter((item) => item.odd_id == id);
-    tmp.forEach((element) => $('#' + element.d_id).removeClass("bg-warning"));
-
-    // Filter out current match and add new selection
+    tmp.forEach((element) =>
+      $('#' + element.d_id).removeClass("bg-warning")
+    );
     betObjLst = betObjLst.filter((item) => item.odd_id !== id);
+
     betObjLst.push(mmOddBet);
-
-    // Update the count display
+    $('#' + mmOddBet.d_id).addClass("bg-warning");
     $("#toggleCount").text(betObjLst.length);
-}
 
-$("#deleteBtn").on("click", function() {
-    // Remove highlight and reset the list
-    $('.box-1, .box-2').removeClass("highlighted");
-    betObjLst.forEach((element) => $('#' + element.d_id).removeClass("bg-info"));
+  }
+  $("#deleteBtn").on("click", function() {
+    betObjLst.forEach((element) =>
+      $('#' + element.d_id).removeClass("bg-info")
+    );
     betObjLst = [];
-});
-
-
+  });
 </script>
 <script>
     function bet_Confirm() {
