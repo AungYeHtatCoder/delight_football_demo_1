@@ -54,8 +54,70 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => null,
                 'created_at'     => '2023-08-14 14:00:26',
                 'updated_at'     => '2023-08-14 14:00:26',
+            ],
+
+            [
+                'id'             => 5,
+                'name'           => 'Master A',
+                'phone'          => '09334567890',
+                'password'       => '$2y$10$qyxYm.2dlaXROvs0OrGHseo4qbeissRMqNWdhlcr/vUqE62vN94Fi', // password
+                'agent_id'       => 1,
+                'remember_token' => null,
+                'created_at'     => '2023-08-14 14:00:26',
+                'updated_at'     => '2023-08-14 14:00:26',
+            ],
+            [
+                'id'             => 6,
+                'name'           => 'Agent A',
+                'phone'          => '09334567891',
+                'password'       => '$2y$10$qyxYm.2dlaXROvs0OrGHseo4qbeissRMqNWdhlcr/vUqE62vN94Fi', // password
+                'agent_id'       => 5,
+                'remember_token' => null,
+                'created_at'     => '2023-08-14 14:00:26',
+                'updated_at'     => '2023-08-14 14:00:26',
+            ],
+            [
+                'id'             => 7,
+                'name'           => 'User A',
+                'phone'          => '09334567892',
+                'password'       => '$2y$10$qyxYm.2dlaXROvs0OrGHseo4qbeissRMqNWdhlcr/vUqE62vN94Fi', // password
+                'agent_id'       => 6,
+                'remember_token' => null,
+                'created_at'     => '2023-08-14 14:00:26',
+                'updated_at'     => '2023-08-14 14:00:26',
+            ],
+            [
+                'id'             => 8,
+                'name'           => 'User B',
+                'phone'          => '09334567893',
+                'password'       => '$2y$10$qyxYm.2dlaXROvs0OrGHseo4qbeissRMqNWdhlcr/vUqE62vN94Fi', // password
+                'agent_id'       => 6,
+                'remember_token' => null,
+                'created_at'     => '2023-08-14 14:00:26',
+                'updated_at'     => '2023-08-14 14:00:26',
+            ],
+            [
+                'id'             => 9,
+                'name'           => 'User C',
+                'phone'          => '09334567894',
+                'password'       => '$2y$10$qyxYm.2dlaXROvs0OrGHseo4qbeissRMqNWdhlcr/vUqE62vN94Fi', // password
+                'agent_id'       => 6,
+                'remember_token' => null,
+                'created_at'     => '2023-08-14 14:00:26',
+                'updated_at'     => '2023-08-14 14:00:26',
+            ],
+            [
+                'id'             => 10,
+                'name'           => 'User D',
+                'phone'          => '09334567895',
+                'password'       => '$2y$10$qyxYm.2dlaXROvs0OrGHseo4qbeissRMqNWdhlcr/vUqE62vN94Fi', // password
+                'agent_id'       => 6,
+                'remember_token' => null,
+                'created_at'     => '2023-08-14 14:00:26',
+                'updated_at'     => '2023-08-14 14:00:26',
             ]
-           
+
+
 
         ];
 

@@ -27,10 +27,12 @@ class CreateMixbetTable extends Migration
             $table->integer('result_h')->nullable();
             $table->integer('result_a')->nullable();
             $table->integer('p_id');
-            $table->string('playerId');
+            $table->unsignedBigInteger('playerId');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->smallinteger('status');
+            $table->foreign('playerId')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

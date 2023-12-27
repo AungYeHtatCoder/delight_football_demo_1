@@ -80,20 +80,31 @@
      </div>
     </div>
     <div class="card-body">
-     <form role="form" class="text-start" action="">
+     <form role="form" class="text-start" action="{{ route('admin.users.update', $user_edit->id) }}" method="post">
       @csrf
+      @method('PUT')
       <div class="custom-form-group">
        <label for="title">User Name</label>
-       <input type="text" id="name" name="name" class="form-control">
+       <input type="text" id="name" name="name" class="form-control" value="{{ $user_edit->name }}">
       </div>
       <div class="custom-form-group">
        <label for="title">Email</label>
-       <input type="email" id="email" name="email" class="form-control">
+       <input type="email" id="email" name="email" class="form-control" value="{{ $user_edit->email}}">
       </div>
       <div class="custom-form-group">
-       <label for="title">Password</label>
-       <input type="password" id="password" password="password" class="form-control">
+       <label for="title">Phone</label>
+       <input type="text" id="phone" name="phone" class="form-control" value="{{ $user_edit->phone}}" readonly>
       </div>
+      @error('phone')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+      <div class="custom-form-group">
+       <label for="title">Password</label>
+       <input type="password" id="password" class="form-control" name="password">
+      </div>
+        @error('password')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
       <div class="custom-form-group">
        <label for="choices-role">Choose Role</label>
@@ -105,9 +116,12 @@
         @endforeach
        </select>
       </div>
+      @error('roles')
+          <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
 
       <div class="custom-form-group">
-       <button class="btn btn-primary" type="button">Edit</button>
+       <button class="btn btn-primary" type="submit">User Update</button>
       </div>
      </form>
     </div>
